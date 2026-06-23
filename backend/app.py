@@ -12,7 +12,11 @@ def create_app(config_name: str = "default") -> Flask:
     app = Flask(__name__)
     app.config.from_object(config_map[config_name])
 
-    CORS(app, resources={r"/*": {"origins": "*"}})
+    CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=False
+)
 
     logging.basicConfig(
         level=logging.INFO,
